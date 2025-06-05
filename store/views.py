@@ -10,6 +10,11 @@ from django.urls import reverse
 # Create your views here.
 
 def store(request):
+  """
+  This will get all the store products and display them,
+  as well as get the user's details to determine if they are
+  a customer and if they have any orders or not.
+  """
   products = Product.objects.all()
 
   if request.user.is_authenticated:
@@ -30,6 +35,10 @@ def store(request):
     })
 
 def cart(request):
+  """
+  Gets all the products added to the cart by the
+  user and displays them
+  """
   products = Product.objects.all()
 
   if request.user.is_authenticated:
@@ -46,6 +55,11 @@ def cart(request):
   })
 
 def checkout(request):
+  """
+  Gets the the products added to the cart and gets the
+  total of these products. The user is then able to pay
+  for them.
+  """
   if request.user.is_authenticated:
     customer = request.user.customer
     order, created = Order.objects.get_or_create(customer=customer, order_complete=False)
@@ -62,6 +76,9 @@ def checkout(request):
 
 
 def updateItem(request):
+  """
+  Allows the user to remove items from the cart
+  """
   data = json.loads(request.body)
   productId = data['productId']
   action = data['action']
@@ -77,6 +94,9 @@ def updateItem(request):
 
 
 def processOrder(request):
+  """
+  Process the user's payment and saves the date of the order
+  """
   print('requesting prder')
   if request.user.is_authenticated:
     customer = request.user.customer
