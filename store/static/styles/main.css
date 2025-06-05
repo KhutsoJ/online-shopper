@@ -1,0 +1,15 @@
+.card>img {
+  height: 300px;
+  width: auto;
+  object-fit: cover;
+}
+
+img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+}
+
+body {
+  padding-block-end: 3rem;
+}
