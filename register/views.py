@@ -13,6 +13,10 @@ def register(request):
   if the form is valid, log the user in and
   save the credentials so the user can login
   later. If not, send the form again.
+
+  :param obj request: The user details
+  
+  :returns: If invalid, will return the register page
   """
   if request.method == "POST":
     form = RegisterForm(request.POST)

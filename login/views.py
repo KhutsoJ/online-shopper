@@ -16,6 +16,10 @@ def authenticate_user(request):
     """
     Check the user's credentials and login if correct
     or send the login form back if incorrect
+
+    :param obj request: The user details
+
+    :returns: if valid, will return the store page. If not, will return the login page
     """
     username = request.POST['username']
     password = request.POST['password']
