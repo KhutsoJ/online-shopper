@@ -5,6 +5,9 @@ from django.utils import timezone
 
 # Create your models here.
 class Customer(models.Model):
+   """
+   Model created to store the customer's/user's details
+   """
    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
    name = models.CharField(max_length=200)
    email = models.CharField(max_length=200)
@@ -13,6 +16,9 @@ class Customer(models.Model):
       return self.name
 
 class Product(models.Model):
+    """
+    Model created to store the product
+    """
     name = models.CharField(max_length=200)
     price = models.FloatField()
     created = models.DateTimeField('date published', auto_now_add=True)
@@ -24,6 +30,9 @@ class Product(models.Model):
 
 
 class Order(models.Model):
+  """
+  Model created to store the user's orders
+  """
   customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
   order_complete = models.BooleanField(default=False)
   order_id = models.CharField(max_length=200, default=0)
@@ -43,6 +52,9 @@ class Order(models.Model):
 
   
 class OrderItem(models.Model):
+  """
+  Model created to store the ordered item
+  """
   product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
   order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
 
