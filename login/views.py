@@ -7,7 +7,13 @@ from django.shortcuts import redirect
 # Create your views here.
 
 def user_login(request):
-    """Send a login form back to the user"""
+    """
+    Send a login form back to the user
+
+    :param obj request: The user details
+
+    :returns: the login form
+    """
     return render(request, 'authentication/login.html')
 
 

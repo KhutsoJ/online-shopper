@@ -14,6 +14,10 @@ def store(request):
   This will get all the store products and display them,
   as well as get the user's details to determine if they are
   a customer and if they have any orders or not.
+
+  :param obj request: The user details
+
+  :returns: the main store page
   """
   products = Product.objects.all()
 
@@ -38,6 +42,10 @@ def cart(request):
   """
   Gets all the products added to the cart by the
   user and displays them
+
+  :param obj request: The user details
+
+  :returns: returns cart items
   """
   products = Product.objects.all()
 
@@ -59,6 +67,10 @@ def checkout(request):
   Gets the the products added to the cart and gets the
   total of these products. The user is then able to pay
   for them.
+
+  :param obj request: The user details
+
+  :returns: returns checkout items
   """
   if request.user.is_authenticated:
     customer = request.user.customer
