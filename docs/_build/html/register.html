@@ -60,11 +60,23 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#register-forms-module">register.forms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-register.forms">register.forms module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#register.forms.RegisterForm"><code class="docutils literal notranslate"><span class="pre">RegisterForm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#register.forms.RegisterForm.Meta"><code class="docutils literal notranslate"><span class="pre">RegisterForm.Meta</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register.forms.RegisterForm.base_fields"><code class="docutils literal notranslate"><span class="pre">RegisterForm.base_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register.forms.RegisterForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">RegisterForm.declared_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register.forms.RegisterForm.media"><code class="docutils literal notranslate"><span class="pre">RegisterForm.media</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-register.models">register.models module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-register.tests">register.tests module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#register-urls-module">register.urls module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#register-views-module">register.views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-register.urls">register.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-register.views">register.views module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#register.views.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-register">Module contents</a></li>
 </ul>
 </li>
@@ -134,8 +146,48 @@
 </dd></dl>
 
 </section>
-<section id="register-forms-module">
-<h2>register.forms module<a class="headerlink" href="#register-forms-module" title="Link to this heading"></a></h2>
+<section id="module-register.forms">
+<span id="register-forms-module"></span><h2>register.forms module<a class="headerlink" href="#module-register.forms" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="register.forms.RegisterForm">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">register.forms.</span></span><span class="sig-name descname"><span class="pre">RegisterForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/register/forms.html#RegisterForm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#register.forms.RegisterForm" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">UserCreationForm</span></code></p>
+<p>Add inputs to the register form with UserCreationForm</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="register.forms.RegisterForm.Meta">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="_modules/register/forms.html#RegisterForm.Meta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#register.forms.RegisterForm.Meta" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="register.forms.RegisterForm.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['name',</span> <span class="pre">'username',</span> <span class="pre">'email',</span> <span class="pre">'password1',</span> <span class="pre">'password2']</span></em><a class="headerlink" href="#register.forms.RegisterForm.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="register.forms.RegisterForm.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#register.forms.RegisterForm.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="register.forms.RegisterForm.base_fields">
+<span class="sig-name descname"><span class="pre">base_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'username':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#register.forms.RegisterForm.base_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="register.forms.RegisterForm.declared_fields">
+<span class="sig-name descname"><span class="pre">declared_fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'email':</span> <span class="pre">&lt;django.forms.fields.EmailField</span> <span class="pre">object&gt;,</span> <span class="pre">'name':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password1':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;,</span> <span class="pre">'password2':</span> <span class="pre">&lt;django.forms.fields.CharField</span> <span class="pre">object&gt;}</span></em><a class="headerlink" href="#register.forms.RegisterForm.declared_fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="register.forms.RegisterForm.media">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">media</span></span><a class="headerlink" href="#register.forms.RegisterForm.media" title="Link to this definition"></a></dt>
+<dd><p>Return all media required to render the widgets on this form.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-register.models">
 <span id="register-models-module"></span><h2>register.models module<a class="headerlink" href="#module-register.models" title="Link to this heading"></a></h2>
@@ -143,11 +195,28 @@
 <section id="module-register.tests">
 <span id="register-tests-module"></span><h2>register.tests module<a class="headerlink" href="#module-register.tests" title="Link to this heading"></a></h2>
 </section>
-<section id="register-urls-module">
-<h2>register.urls module<a class="headerlink" href="#register-urls-module" title="Link to this heading"></a></h2>
+<section id="module-register.urls">
+<span id="register-urls-module"></span><h2>register.urls module<a class="headerlink" href="#module-register.urls" title="Link to this heading"></a></h2>
 </section>
-<section id="register-views-module">
-<h2>register.views module<a class="headerlink" href="#register-views-module" title="Link to this heading"></a></h2>
+<section id="module-register.views">
+<span id="register-views-module"></span><h2>register.views module<a class="headerlink" href="#module-register.views" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="register.views.register">
+<span class="sig-prename descclassname"><span class="pre">register.views.</span></span><span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/register/views.html#register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#register.views.register" title="Link to this definition"></a></dt>
+<dd><p>Send a registration form to the user
+if the form is valid, log the user in and
+save the credentials so the user can login
+later. If not, send the form again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>obj</em>) – The user details</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>If invalid, will return the register page</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="module-register">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-register" title="Link to this heading"></a></h2>

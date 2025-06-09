@@ -126,11 +126,23 @@ store
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="register.html#register-forms-module">register.forms module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="register.html#module-register.forms">register.forms module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="register.html#register.forms.RegisterForm"><code class="docutils literal notranslate"><span class="pre">RegisterForm</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="register.html#register.forms.RegisterForm.Meta"><code class="docutils literal notranslate"><span class="pre">RegisterForm.Meta</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="register.html#register.forms.RegisterForm.base_fields"><code class="docutils literal notranslate"><span class="pre">RegisterForm.base_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="register.html#register.forms.RegisterForm.declared_fields"><code class="docutils literal notranslate"><span class="pre">RegisterForm.declared_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="register.html#register.forms.RegisterForm.media"><code class="docutils literal notranslate"><span class="pre">RegisterForm.media</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="register.html#module-register.models">register.models module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="register.html#module-register.tests">register.tests module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="register.html#register-urls-module">register.urls module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="register.html#register-views-module">register.views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="register.html#module-register.urls">register.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="register.html#module-register.views">register.views module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="register.html#register.views.register"><code class="docutils literal notranslate"><span class="pre">register()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="register.html#module-register">Module contents</a></li>
 </ul>
 </li>
@@ -153,7 +165,7 @@ store
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="store.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="store.html#store-admin-module">store.admin module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="store.html#module-store.admin">store.admin module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="store.html#module-store.apps">store.apps module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="store.html#store.apps.StoreConfig"><code class="docutils literal notranslate"><span class="pre">StoreConfig</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="store.html#store.apps.StoreConfig.default_auto_field"><code class="docutils literal notranslate"><span class="pre">StoreConfig.default_auto_field</span></code></a></li>
@@ -162,10 +174,74 @@ store
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="store.html#store-models-module">store.models module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="store.html#module-store.models">store.models module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.html#store.models.Customer"><code class="docutils literal notranslate"><span class="pre">Customer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Customer.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Customer.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Customer.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Customer.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Customer.email"><code class="docutils literal notranslate"><span class="pre">Customer.email</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Customer.id"><code class="docutils literal notranslate"><span class="pre">Customer.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Customer.name"><code class="docutils literal notranslate"><span class="pre">Customer.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Customer.objects"><code class="docutils literal notranslate"><span class="pre">Customer.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Customer.order_set"><code class="docutils literal notranslate"><span class="pre">Customer.order_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Customer.user"><code class="docutils literal notranslate"><span class="pre">Customer.user</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Customer.user_id"><code class="docutils literal notranslate"><span class="pre">Customer.user_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="store.html#store.models.Order"><code class="docutils literal notranslate"><span class="pre">Order</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Order.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Order.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Order.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Order.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Order.customer"><code class="docutils literal notranslate"><span class="pre">Order.customer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Order.customer_id"><code class="docutils literal notranslate"><span class="pre">Order.customer_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Order.get_amount"><code class="docutils literal notranslate"><span class="pre">Order.get_amount()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Order.get_total"><code class="docutils literal notranslate"><span class="pre">Order.get_total</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Order.id"><code class="docutils literal notranslate"><span class="pre">Order.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Order.objects"><code class="docutils literal notranslate"><span class="pre">Order.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Order.order_complete"><code class="docutils literal notranslate"><span class="pre">Order.order_complete</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Order.order_id"><code class="docutils literal notranslate"><span class="pre">Order.order_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Order.orderitem_set"><code class="docutils literal notranslate"><span class="pre">Order.orderitem_set</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="store.html#store.models.OrderItem"><code class="docutils literal notranslate"><span class="pre">OrderItem</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.OrderItem.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">OrderItem.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.OrderItem.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">OrderItem.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.OrderItem.get_total"><code class="docutils literal notranslate"><span class="pre">OrderItem.get_total()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.OrderItem.id"><code class="docutils literal notranslate"><span class="pre">OrderItem.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.OrderItem.objects"><code class="docutils literal notranslate"><span class="pre">OrderItem.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.OrderItem.order"><code class="docutils literal notranslate"><span class="pre">OrderItem.order</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.OrderItem.order_id"><code class="docutils literal notranslate"><span class="pre">OrderItem.order_id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.OrderItem.product"><code class="docutils literal notranslate"><span class="pre">OrderItem.product</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.OrderItem.product_id"><code class="docutils literal notranslate"><span class="pre">OrderItem.product_id</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="store.html#store.models.Product"><code class="docutils literal notranslate"><span class="pre">Product</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.DoesNotExist"><code class="docutils literal notranslate"><span class="pre">Product.DoesNotExist</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.MultipleObjectsReturned"><code class="docutils literal notranslate"><span class="pre">Product.MultipleObjectsReturned</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.created"><code class="docutils literal notranslate"><span class="pre">Product.created</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.created_at"><code class="docutils literal notranslate"><span class="pre">Product.created_at</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.get_next_by_created"><code class="docutils literal notranslate"><span class="pre">Product.get_next_by_created()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.get_next_by_created_at"><code class="docutils literal notranslate"><span class="pre">Product.get_next_by_created_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.get_previous_by_created"><code class="docutils literal notranslate"><span class="pre">Product.get_previous_by_created()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.get_previous_by_created_at"><code class="docutils literal notranslate"><span class="pre">Product.get_previous_by_created_at()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.id"><code class="docutils literal notranslate"><span class="pre">Product.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.image_link"><code class="docutils literal notranslate"><span class="pre">Product.image_link</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.name"><code class="docutils literal notranslate"><span class="pre">Product.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.objects"><code class="docutils literal notranslate"><span class="pre">Product.objects</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.orderitem_set"><code class="docutils literal notranslate"><span class="pre">Product.orderitem_set</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="store.html#store.models.Product.price"><code class="docutils literal notranslate"><span class="pre">Product.price</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="store.html#module-store.tests">store.tests module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="store.html#store-urls-module">store.urls module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="store.html#store-views-module">store.views module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="store.html#module-store.urls">store.urls module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="store.html#module-store.views">store.views module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="store.html#store.views.cart"><code class="docutils literal notranslate"><span class="pre">cart()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="store.html#store.views.checkout"><code class="docutils literal notranslate"><span class="pre">checkout()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="store.html#store.views.processOrder"><code class="docutils literal notranslate"><span class="pre">processOrder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="store.html#store.views.store"><code class="docutils literal notranslate"><span class="pre">store()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="store.html#store.views.updateItem"><code class="docutils literal notranslate"><span class="pre">updateItem()</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="store.html#module-store">Module contents</a></li>
 </ul>
 </li>

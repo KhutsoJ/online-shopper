@@ -82,7 +82,13 @@
 <div class="viewcode-block" id="user_login">
 <a class="viewcode-back" href="../../login.html#login.views.user_login">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">user_login</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Send a login form back to the user&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Send a login form back to the user</span>
+
+<span class="sd">    :param obj request: The user details</span>
+
+<span class="sd">    :returns: the login form</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;authentication/login.html&#39;</span><span class="p">)</span></div>
 
 

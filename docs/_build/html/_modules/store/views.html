@@ -1,0 +1,236 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>store.views &mdash; shopper 05.06.2025 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=db042581"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            shopper
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../login.html">login package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../register.html">register package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../store.html">store package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">shopper</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">store.views</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for store.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">django.shortcuts</span><span class="w"> </span><span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">redirect</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.models</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.http</span><span class="w"> </span><span class="kn">import</span> <span class="n">JsonResponse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">django.urls</span><span class="w"> </span><span class="kn">import</span> <span class="n">reverse</span>
+
+
+
+<span class="c1"># Create your views here.</span>
+
+<div class="viewcode-block" id="store">
+<a class="viewcode-back" href="../../store.html#store.views.store">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">store</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  This will get all the store products and display them,</span>
+<span class="sd">  as well as get the user&#39;s details to determine if they are</span>
+<span class="sd">  a customer and if they have any orders or not.</span>
+
+<span class="sd">  :param obj request: The user details</span>
+
+<span class="sd">  :returns: the main store page</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">products</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+  <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">Customer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+      <span class="n">Customer</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+    <span class="n">customer</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">customer</span>
+    <span class="n">order</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Order</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">customer</span><span class="o">=</span><span class="n">customer</span><span class="p">,</span> <span class="n">order_complete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">order</span><span class="o">.</span><span class="n">orderitem_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">cart_items</span> <span class="o">=</span> <span class="n">order</span><span class="o">.</span><span class="n">get_amount</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;get_total&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;get_amount&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+    <span class="n">cart_items</span> <span class="o">=</span> <span class="n">order</span><span class="p">[</span><span class="s1">&#39;get_amount&#39;</span><span class="p">]</span>
+  
+  <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;./store.html&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">&#39;products&#39;</span><span class="p">:</span> <span class="n">products</span><span class="p">,</span>
+    <span class="s1">&#39;cartItems&#39;</span><span class="p">:</span> <span class="n">cart_items</span>
+    <span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="cart">
+<a class="viewcode-back" href="../../store.html#store.views.cart">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cart</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Gets all the products added to the cart by the</span>
+<span class="sd">  user and displays them</span>
+
+<span class="sd">  :param obj request: The user details</span>
+
+<span class="sd">  :returns: returns cart items</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">products</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+
+  <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+    <span class="n">customer</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">customer</span>
+    <span class="n">order</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Order</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">customer</span><span class="o">=</span><span class="n">customer</span><span class="p">,</span> <span class="n">order_complete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">order</span><span class="o">.</span><span class="n">orderitem_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;get_total&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;get_amount&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+  
+  <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;./cart.html&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">&#39;items&#39;</span><span class="p">:</span> <span class="n">items</span><span class="p">,</span>
+    <span class="s1">&#39;order&#39;</span><span class="p">:</span> <span class="n">order</span><span class="p">,</span>
+  <span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="checkout">
+<a class="viewcode-back" href="../../store.html#store.views.checkout">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">checkout</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Gets the the products added to the cart and gets the</span>
+<span class="sd">  total of these products. The user is then able to pay</span>
+<span class="sd">  for them.</span>
+
+<span class="sd">  :param obj request: The user details</span>
+
+<span class="sd">  :returns: returns checkout items</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+    <span class="n">customer</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">customer</span>
+    <span class="n">order</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Order</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">customer</span><span class="o">=</span><span class="n">customer</span><span class="p">,</span> <span class="n">order_complete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">items</span> <span class="o">=</span> <span class="n">order</span><span class="o">.</span><span class="n">orderitem_set</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="n">order</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;get_total&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;get_amount&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+
+
+  <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s1">&#39;./checkout.html&#39;</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">&#39;items&#39;</span><span class="p">:</span> <span class="n">items</span><span class="p">,</span>
+    <span class="s1">&#39;order&#39;</span><span class="p">:</span> <span class="n">order</span><span class="p">,</span>
+    <span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="updateItem">
+<a class="viewcode-back" href="../../store.html#store.views.updateItem">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">updateItem</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Allows the user to remove items from the cart</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+  <span class="n">productId</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;productId&#39;</span><span class="p">]</span>
+  <span class="n">action</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;action&#39;</span><span class="p">]</span>
+
+  <span class="n">customer</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">customer</span>
+  <span class="n">product</span> <span class="o">=</span> <span class="n">Product</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">productId</span><span class="p">)</span>
+  <span class="n">order</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Order</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">customer</span><span class="o">=</span><span class="n">customer</span><span class="p">,</span> <span class="n">order_complete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">orderItem</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">OrderItem</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">product</span><span class="o">=</span><span class="n">product</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="s1">&#39;remove&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;removing button&#39;</span><span class="p">)</span>
+    <span class="n">orderItem</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="processOrder">
+<a class="viewcode-back" href="../../store.html#store.views.processOrder">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">processOrder</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">  Process the user&#39;s payment and saves the date of the order</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;requesting prder&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">:</span>
+    <span class="n">customer</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">customer</span>
+    <span class="n">order</span><span class="p">,</span> <span class="n">created</span> <span class="o">=</span> <span class="n">Order</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get_or_create</span><span class="p">(</span><span class="n">customer</span><span class="o">=</span><span class="n">customer</span><span class="p">,</span> <span class="n">order_complete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">order_id</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">timestamp</span><span class="p">()</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">order_complete</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">order</span><span class="o">.</span><span class="n">save</span><span class="p">()</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, KhutsoJ.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
